@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AutoGrader</title>
+    <header style="background-color: rgb(10, 210, 236);">
+        
+        {% load staticfiles %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
+    </header>
+</head>
+<style>
+   section#right{
+    background-color: rgba(165, 193, 196, 0.425);
+    margin-left: 5vh;
+    margin-top: 5vh;
+    margin-right: 5vh;
+    margin-bottom: 5vh;
+    padding: 10vh;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 5px #000;
+   }
+   .body{
+      background-color: rgba(88, 116, 117, 0.795);
+  } 
+  </style>
+<body class="body">
+        <nav class="navbar navbar-expand-md navbar-light sticky-top" style="background-color: rgba(45, 163, 192, 0.801); margin-bottom: 0%">
+                <div class="container-fluid">
+                  <div class="navbar-header" >
+                    <a class="navbar-brand" style="color:rgb(255, 255, 255);" href="#">AutoGrader</a>
+                  </div>
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="/home/">Home</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/teacher_index"><span class="glyphicon glyphicon-certificate"></span> Teacher</a></li>
+                    
+                  </ul>
+                </div>
+              </nav>
+              <section id="right">
+              <h1>hello assignment_World</h1>
+          
+              <table class="table table-bordered">
+                <thead>
+                  <th>link to download</th>
+                  <th>course Code</th>
+                </thead>
+                <tbody>
+                  
+                    {% for file in files %}
+                      
+                      <tr>
+                          
+                          <!-- <td><a href="{{file.zipfile.url}}">{{ file.zipfile}}</a></td> -->
+                          <!-- {{file.name}} -->
+                          <td><a href="{{ file.get_download_url }}" target="_blank" rel="noopener noreferrer">Click to download</a></td>
+                          <td>{{file.course_no_id}}</td>
+                      </tr>
+                       
+                        
+                    {% endfor %}
+                </tbody>
+              </table>
+
+              <!-- <form action="">
+                  <input type="file" value="download"name="file" id="">
+              </form> -->
+            </section>
+                  
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AutoGrader</title>
+    <header style="background-color: rgb(10, 210, 236);">
+        
+        {% load staticfiles %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/global.css' %}">
+    </header>
+</head>
+<style>
+  section#left{
+    background-color: rgba(165, 193, 196, 0.425);
+    margin-top: 5vh;
+    margin-right: 5vh;
+    padding: 10vh;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 5px #000;
+    float:right;
+  }
+  section#right{
+    background-color: rgba(165, 193, 196, 0.425);
+    margin-top: 5vh;
+    margin-left: 5vh;
+    margin-bottom: 5vh;
+    padding: 10vh;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 5px #000;
+    float:left;
+  }
+</style>
+<body background="{% static 'images/clas.jpg' %}">
+        <nav class="navbar navbar-expand-md navbar-light sticky-top" style="background-color: rgba(172, 195, 201, 0.801); margin-bottom: 0%">
+                <div class="container-fluid">
+                  <div class="navbar-header" >
+                    <a class="navbar-brand" style="color:rgb(255, 255, 255);" href="#">AutoGrader</a>
+                  </div>
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="/home/">Home</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/home/teacher_index"><span class="glyphicon glyphicon-certificate"></span> Teacher</a></li>
+                    
+                  </ul>
+                </div>
+              </nav>
+          <div id="container">
+            <section id="left">
+                <form class="course_redg" method="GET" action="#">{% csrf_token %}
+                    <div class="form-group" >
+                      <label for="text">Course Code</label>
+                      <input name="course"type="text" class="form-control" placeholder="Enter Course Code">
+                     
+                      <input name="email" type="hidden" value= "{{ email }}">
+                      
+                      
+                    </div>
+                    <button type="submit" class="btn btn-block" style="color:rgb(202, 128, 17)" >Submit</button>
+                  </form>
+            </section>
+            <!-- <section id="right">
+              <h1>Redgistered Courses</h1>
+              <div> -->
+                <section id="right">
+                  <h2>Redgistered Courses</h2>
+                <table class="table table-bordered">
+                  <thead>
+                    <th>Course Name</th>
+                    <th>course Code</th>
+                  </thead>
+                  <tbody>
+                    
+                      {% for course in p %}
+                        {% for courseid in course_id %}
+                      {% if course.code ==  courseid.course_id_id %}
+                        
+                        <tr>
+                          
+                            <td><b><a href="assignment_download/?course_name={{ course.course_name }} &course_code={{ course.code }} "style="color:rgb(255, 255, 255);">{{ course.course_name}}</a></b></td>
+                            <td><b><a href="assignment_download/?course_name={{ course.course_name }} &course_code={{ course.code }}"style="color:rgb(255, 255, 255);">{{course.code}}</a></b></td>
+                        </tr>
+                        {% endif %}    
+                        {% endfor %}
+                      {% endfor %}
+                  </tbody>
+                </table>
+                <form method="GET" action="marks">{% csrf_token %}
+                    <input name="email" type="hidden" value= "{{ email }}">
+                    <button type="submit" class="btn btn-block" style="color:rgb(202, 128, 17)" >see-your-marks</button>
+                  </form>
+              </section>
+              <!-- </div>
+            </section> -->
+          </div>
+                  
+</body>
+</html>

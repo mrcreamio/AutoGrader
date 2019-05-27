@@ -1,0 +1,28 @@
+.contact-form{
+    position: absolute;
+    top:20vh;
+    left:20vh;
+    background: rgb(255, 255, 255);
+    padding: 100px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 5px #000;
+}
+
+body{
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.register{
+    position: absolute;
+    top: 5vh;
+    left:20vh;
+    background: rgba(177, 200, 216, 0.842);
+    padding: 100px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 5px #000;
+}
+.s{
+    justify-content: right;
+    padding-left: 10vh;
+    border-radius: 20px;
+}

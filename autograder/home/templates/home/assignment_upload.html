@@ -1,0 +1,66 @@
+  <!DOCTYPE html>
+<html>
+<head>
+        {% load staticfiles %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-filestyle.min.js"> </script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+section#left{
+  background-color: rgba(165, 193, 196, 0.425);
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  padding: 10vh;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px 5px #000;
+  
+}
+</style>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light sticky-top" style="background-color: rgba(45, 163, 192, 0.801); margin-bottom: 0%">
+        <div class="container-fluid">
+          <div class="navbar-header" >
+            <a class="navbar-brand" style="color:rgb(255, 255, 255);" href="#">AutoGrader</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/home/" style="color:rgb(255, 255, 255);">Home</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="teacher_index" style="color:rgb(255, 255, 255);"><span class="glyphicon glyphicon-certificate"></span> Teacher</a></li>
+            
+          </ul>
+        </div>
+      </nav>
+    <div>
+<!-- <div class="container">
+  <section id="left">
+<h2>Please upload assignment here</h2>
+<form class="contact-form"method="POST" enctype="multipart/form-data">{% csrf_token %}
+    	<div class="form-group">
+	      <label class="control-label" >question file upload</label>
+        <input type="file" class="filestyle" data-buttonText="Select a File" name="questionfile"> 
+		</div>
+  </section>
+</div> -->
+
+<div class="container">
+    <section id="left">
+  <!-- <h2>Assig/nments</h2> -->
+  <form class="contact-form"method="POST" enctype="multipart/form-data">{% csrf_token %}
+        <div class="form-group">
+          <h1><label class="control-label" >Question zip file upload</label></h1>
+          <input type="file" class="filestyle" data-buttonText="Select a File" name="questionfile"> 
+          <br>
+          <button type="submit" class="btn btn-primary" style="color:rgb(255, 255, 255)" >Submit</button>
+      </div>
+    </section>
+  </div>
+
+
+</form>
+</body>
+</html>
